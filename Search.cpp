@@ -12,10 +12,44 @@
 using namespace std;
 
 indexRecord readline(string line);
+/**<
+// This function receives a line from the index file and
+// returns an indexRecord object with the same data.
+// @pre There is an index file.
+// @post index file line is constructed into an object form.
+// @param line string containing a line of the index file.
+// @return indexRecord
+*/
 
 void search_indexVector(int argc, char* argv[], string data, vector <indexRecord> indexVector, vector <string> fieldOrder, vector<string> &not_foundRecords, vector<Record> &foundRecords);
+/**<
+// This function searches the length-indicated CSV for all zip codes provided
+// via command line arguments. If the zip code is found, it is added to the foundRecords vector.
+// If a zipcode is not found, it is added to the not_foundRecords vector. Any invalid input is
+// ignored. 
+// @pre There is a length-indicated CSV file and corresponding index file
+// @post All zip codes being searched via command line argument are sorted in the the respective
+// foundRecords or not_foundRecords vector.
+// @param argc int count of command line arguments.
+// @param argv char* of command line arguments.
+// @param data string containing data of whole length-indicated file. 
+// @param indexVector vector <indexRecord> vector containing all of the indexRecord objects from the index.
+// @param fieldOrder vector <string> containing the fields of the CSV in sequential order.
+// @param &not_foundRecords vector<string> containing the string representation of zip codes not found via the search.
+// @param &foundRecords vector<Record> containing the record objects of zip codes found via search.
+// @return void
+*/
 
 Record unpackRecord(vector <string> fieldOrder, string line);
+/**<
+// This function takes in a whole record (without length-indicator) as a string
+// and constructs a corresponding Record object.
+// @pre During a search, the zip code was found in the index primary key.
+// @post a record data line is converted to an object verison and returned.
+// @param fieldOrder vector <string> containing the fields of the CSV in sequential order.
+// @param line string containing the record data from the length-indicated CSV.
+// @return Record
+*/
 
 int main(int argc, char* argv[])
 {
