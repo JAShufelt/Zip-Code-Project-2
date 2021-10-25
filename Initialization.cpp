@@ -22,3 +22,11 @@ int main(int arc, char* argv[])
     recordBuff.writeIndex(headerBuff, recordBuff.constructIndex(headerBuff));   //Create a corresponding index for the Length-Indicated CSV, and write it to an index file
     cout << "Initialization Done" << endl;
 }
+/**<
+// This is a main function that simply creates all of the structures needed to execute the program.
+// This does not impliment any of the dynamic elements exect for the file name.
+// @pre A zip code CSV file exists.
+// @post A new length-indicated version of the file and an inex file exist.
+// @param arc the number of characters in the file name.
+// @param argv[] The file name stored as an array of characters.
+*/
