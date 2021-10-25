@@ -1,4 +1,7 @@
-This program uses multiple .cpp and .h files, the .cpp with the main function is "Initialization.cpp"
+This program uses multiple .cpp and .h files, the .cpp with the main functions are "Initialization.cpp" and "Search.cpp"
+
+*Initialization.cpp*
+(must be compiled with buffer.cpp headerBuffer.cpp indexRecord.cpp and record.cpp)
 This program initializes many things and prepares the program so that the search function can operate easily
 
 To initialize a CSV... 
@@ -26,7 +29,25 @@ It should have a file size of 0 bytes until the program finishes.
 The index file is organized so that each line contains one zipcode (primary key) followed by the byte
 offset to the beginning of the record, within the corresponding Length-Indicated CSV file.
 
-The header of the index file will contain all the fields, and in the proper order. This should make it easy
-to write a program that can search the index and then reconstruct a record through direct seeking via the byte offset.
+*Search.cpp*
+(must be compiled with indexRecord.cpp and record.cpp)
+
+This program must be ran after the initialization program has been run.
+In order for Search.cpp to function properly, there must be a _LENGTH-INDICATED data file
+aswell as an _INDEX file for the corresponding .csv .
+
+When executing, the first commandline argument must be the name of the .csv file.
+Any additional commandline arguments will be checked if they are in the format of -Z(zip code).
+If a CLA does not fit the convention of -Z(zip code) it will be ignored.
+
+Example Compilation:
+g++ Search.cpp indexRecord.cpp record.cpp -o Search.exe
+
+Example Execution:
+Search.exe us_postal_codes.csv -Z55449 -Z55014 -Z90210
+
+You should get back a table of all zip code records found if you searched a real zip code, aswell as
+a table of records not found if any fake zip codes were searched for. 
+
 
 
