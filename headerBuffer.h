@@ -40,14 +40,14 @@ public:
 // @pre The length-indicated file exists and a vector contains the field order.
 // @post A header is written at the top of the length-indicated file.
 // @param filename A string containing the name of the length-indicated file.
-
+*/
 	int getHeaderRecordSize();
 /**<
 // This function returns the size of the header record.
 // @pre Header Record exists.
 // @post Size of header record is returned.
 // @return Size of the header record as integer.
-
+*/
 public:
 	string structure_Type;	//Length-Indicated Records
 	double file_Version;	//1.0
